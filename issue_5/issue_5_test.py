@@ -23,21 +23,21 @@ class FakeJsonFile:
 @patch("what_is_year_now.urllib.request.urlopen")
 class TestingCalendar(unittest.TestCase):
     def test_dot_format(self, mock_datetime):
-        date_today = date.today().strftime("%d.%m.%Y")
+        date_today = "08.12.2022"
         fake_response = json.dumps({"currentDateTime": date_today})
         mock_datetime.return_value = FakeJsonFile(fake_response)
-        assert what_is_year_now.what_is_year_now() == datetime.date.today().year
+        assert what_is_year_now.what_is_year_now() == 2022
         mock_datetime.assert_called_once() 
         
     def test_get_datetime(self, mock_datetime):
-        date_today = date.today().strftime("%Y-%m-%d")
+        date_today = "08-12-2022"
         fake_response = json.dumps({"currentDateTime": date_today})
         mock_datetime.return_value = FakeJsonFile(fake_response)
-        assert what_is_year_now.what_is_year_now() == datetime.date.today().year
+        assert what_is_year_now.what_is_year_now() == 2022
         mock_datetime.assert_called_once()
 
     def test_exception(self, mock_datetime):
-        date_today = date.today().strftime("%d/%m/%Y")
+        date_today = "08/12/2022"
         fake_response = json.dumps({"currentDateTime": date_today})
         mock_datetime.return_value = FakeJsonFile(fake_response)
         with self.assertRaises(ValueError):
