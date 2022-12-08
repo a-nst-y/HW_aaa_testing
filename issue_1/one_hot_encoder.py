@@ -41,7 +41,7 @@ class Testing(unittest.TestCase):
         self.assertNotEqual(a, b)
     def test_tuple(self):
         a = fit_transform(('q', 'w', 'e', 'r', 't', 'y'))
-        b = [('q', [0, 0, 0, 0, 0, 1]), ('w', [0, 0, 0, 0, 1, 0]),\
+        b = [('q', [0, 0, 0, 0, 0, 1]), ('w', [0, 0, 0, 0, 1, 0]), \
              ('e', [0, 0, 0, 1, 0, 0]), ('r', [0, 0, 1, 0, 0, 0]), \
              ('t', [0, 1, 0, 0, 0, 0]), ('y', [1, 0, 0, 0, 0, 0])]
         self.assertEqual(a, b)
@@ -50,9 +50,9 @@ class Testing(unittest.TestCase):
 
 def test_cities():
     cities = ['Moscow', 'New York', 'Moscow', 'London']
-    assert fit_transform(cities) == [('Moscow', [0, 0, 1]),\
-                                     ('New York', [0, 1, 0]),\
-                                     ('Moscow', [0, 0, 1]),\
+    assert fit_transform(cities) == [('Moscow', [0, 0, 1]), \
+                                     ('New York', [0, 1, 0]), \
+                                     ('Moscow', [0, 0, 1]), \
                                      ('London', [1, 0, 0])]
 def test_numbers():
     numbers = [1, 2, 3, 4, 3, 2, 1]
